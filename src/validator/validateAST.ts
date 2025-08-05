@@ -1,5 +1,5 @@
 import { ParsedAST, ValidationError, BPod, BPodInput } from '../types';
-import { isValidURL, isNonEmptyArray } from '../utils';
+import { isValidURL, isNonEmptyArray, isValidEmail } from '../utils';
 
 export function validateAST(ast: ParsedAST): ValidationError[] {
     const errors: ValidationError[] = [];
@@ -32,8 +32,8 @@ export function validateAST(ast: ParsedAST): ValidationError[] {
         errors.push({ message: 'Invalid website URL in profile', line: 1, column: 1, severity: 'warning' });
     }
 
-    if (profile.contact && !isValidURL(profile.contact)) {
-        errors.push({ message: 'Invalid contact URL in profile', line: 1, column: 1, severity: 'warning' });
+    if (profile.contact && !(isValidURL(profile.contact) || isValidEmail(profile.contact))) {
+        errors.push({ message: 'Invalid contact in profile', line: 1, column: 1, severity: 'warning' });
     }
 
     // Validate bPods
