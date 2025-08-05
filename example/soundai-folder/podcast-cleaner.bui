@@ -1,0 +1,22 @@
+b-pod "Podcast Audio Cleaner" {
+  accepts: ["mp3", "wav", "aac", "m4a"],
+  inputs: [
+    { name: "denoise", type: "checkbox", label: "Remove Background Noise" },
+    { name: "normalize", type: "checkbox", label: "Normalize Audio Levels" },
+    { name: "model", type: "dropdown", label: "Processing Model", options: ["studio", "podcast", "live"] }
+  ],
+  submit: { label: "Clean Audio", action: "processAudio" },
+  api: {
+    url: "https://api.soundai.com/v1/audio/cleanup",
+    method: "POST",
+    fileParams: ["audioFile"],
+    bodyTemplate: {
+      "file": "{audioFile}",
+      "denoise": "{denoise}",
+      "normalize": "{normalize}",
+      "model": "{model}",
+      "webhook_url": "{webhook_url}"
+    },
+    responseType: "file"
+  }
+} 

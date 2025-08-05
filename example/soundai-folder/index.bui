@@ -1,0 +1,8 @@
+profile: {
+  version: "1.0.0",
+  name: "SoundAI Labs",
+  logo: "https://cdn.breeth.com/logos/soundai.png",
+  description: "Professional AI-powered audio processing tools for podcasters, musicians, and content creators.",
+  website: "https://soundai.com",
+  contact: "support@soundai.com"
+} 

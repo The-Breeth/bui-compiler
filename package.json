@@ -1,0 +1,31 @@
+{
+  "name": "breeth-bui-compiler",
+  "version": "1.0.0",
+  "description": "Compiler for Breeth .bui files, converting them into an internal JSON AST.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/breeth-bui-compiler.git"
+  },
+  "keywords": [
+    "breeth",
+    "compiler",
+    "bui",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "chevrotain": "^11.0.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "jest": "^26.0.0",
+    "ts-jest": "^26.5.6",
+    "typescript": "^4.0.0"
+  }
+}
