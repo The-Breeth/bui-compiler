@@ -1,31 +1,22 @@
-import { parseBuiFile as parseBuiFileFull, parseBuiFolder as parseBuiFolderFull } from './parser';
-import { validateBuiAst as validateBuiAstFull } from './validator';
-import { CompilerError as CompilerErrorFull, ParsedAST as ParsedASTFull } from './types';
+import { parseFromFiles } from './parser';
+import { validateBuiAst } from './validator';
+import { renderAstToHtml } from './render';
+import { ParsedAST, CompilerError } from './types';
 
 export interface CompileResult {
-  parsed: ParsedASTFull | null;
-  errors: CompilerErrorFull[];
+  ast: ParsedAST;
+  errors: CompilerError[];
 }
 
-/**
- * Compiles a .bui file (single-file or folder mode) to a parsed object and errors.
- * @param inputPath Path to .bui file or folder
- * @param mode 'single' | 'folder'
- */
-export async function compileBui(inputPath: string, mode: 'single' | 'folder'): Promise<CompileResult> {
-  let parsed: ParsedASTFull | null = null;
-  let errors: CompilerErrorFull[] = [];
-  try {
-    parsed = mode === 'single' ? await parseBuiFileFull(inputPath) : await parseBuiFolderFull(inputPath);
-    errors = validateBuiAstFull(parsed);
-  } catch (e: any) {
-    errors.push({
-      message: e.message || 'Unknown error',
-      line: 0,
-      column: 0,
-      severity: 'error',
-    });
-    parsed = null;
-  }
-  return { parsed, errors };
+// Accepts raw .bui files mapped by filename and returns AST + validation errors
+export async function compile(files: Record<string, string>): Promise<CompileResult> {
+  const ast = await parseFromFiles(files);
+  const errors = validateBuiAst(ast);
+  return { ast, errors };
+}
+
+// Convenience function to get rendered HTML from raw files
+export async function render(files: Record<string, string>): Promise<string> {
+  const { ast } = await compile(files);
+  return renderAstToHtml(ast);
 }
