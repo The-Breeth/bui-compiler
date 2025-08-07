@@ -1,26 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "moduleResolution": "node",
-    "module": "commonjs",
+    "target": "ES2022",
+    "module": "ESNext",
+    "declaration": true,
+    "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "baseUrl": "./src",
-    "paths": {
-      "*": [
-        "node_modules/*"
-      ]
-    }
+    "moduleResolution": "node",
+    "skipLibCheck": true
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "test"
-  ]
+  "include": ["src/**/*"]
 }

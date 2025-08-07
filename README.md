@@ -1,52 +1,156 @@
-# Breeth BUI Compiler
+# 🧠 Breeth BUI Compiler
 
-## Overview
-The Breeth BUI Compiler is a TypeScript-based tool designed to parse, validate, and compile .bui files into an internal JSON Abstract Syntax Tree (AST). This compiler adheres to the specifications outlined for Breeth Extensions (B-Pods) and provides a structured approach to managing audio processing services.
+The official compiler for `.bui` files — a custom declarative format used to define AI plugin panels for creative tools. This compiler parses, validates, and builds a structured AST from `.bui` files used by the Breeth platform.
 
-## Project Structure
-The project is organized into the following directories and files:
+---
 
-- **src/**: Contains the source code for the compiler.
-  - **ast/**: Defines the AST structure used for representing parsed .bui files.
-  - **parser/**: Implements the logic for parsing .bui files into ASTs.
-  - **validator/**: Contains validation rules for .bui files.
-  - **errors/**: Defines custom error classes and handling utilities.
-  - **types/**: Contains TypeScript types and interfaces used throughout the project.
-  - **utils/**: Includes utility functions for various tasks.
-  - **index.ts**: The main entry point for the compiler.
+## ✨ What is a .bui File?
 
-- **test/**: Contains unit and integration tests for the compiler's functionality.
-  - **parser.test.ts**: Tests for the parser functionality.
-  - **validator.test.ts**: Tests for the validator functionality.
-  - **compiler.test.ts**: Integration tests for the overall compiler functionality.
+A `.bui` file is a lightweight, markdown-inspired format designed to define:
 
-- **package.json**: Configuration file for npm, listing dependencies and scripts.
-- **tsconfig.json**: TypeScript configuration file specifying compiler options.
-- **README.md**: Documentation for the project.
+- 🔌 Plugin interfaces (`bPods`)
+- 🧾 Form inputs
+- ⚙️ API endpoints
+- 🔁 Submit actions
+- 📦 Multi-file modularity
 
-## Setup Instructions
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory:
-   ```
-   cd breeth-bui-compiler
-   ```
-3. Install dependencies:
-   ```
-   npm install
-   ```
+Use `.bui` to rapidly build services for creative apps like audio/video editors, design tools, and more.
 
-## Usage
-To compile a .bui file, you can use the main entry point in `src/index.ts`. The compiler will parse the file, validate its contents, and produce an internal JSON AST.
+---
 
-## Contribution Guidelines
-Contributions are welcome! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them.
-4. Push your branch and create a pull request.
+## 📦 Installation
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+```bash
+npm install breeth-bui-compiler
+```
+
+---
+
+## 🛠️ Usage
+
+### Programmatic
+
+```js
+import { parseBUI } from "breeth-bui-compiler";
+
+const result = await parseBUI("/path/to/your/index.bui");
+
+console.log(result.ast);      // Validated AST
+console.log(result.errors);   // Validation errors (if any)
+console.log(result.metadata); // File trace metadata
+```
+
+### CLI (coming soon)
+
+```bash
+npx breeth-bui-compiler validate path/to/file.bui
+```
+
+---
+
+## ✅ What It Validates
+
+| Feature               | Status                                         |
+| --------------------- | ---------------------------------------------- |
+| `.bui` syntax       | ✅ Complete                                    |
+| `version` field     | ✅ Required & strict                           |
+| `profile` structure | ✅ Required with URL & email checks            |
+| `bPods`             | ✅ Full support                                |
+| `accepts`           | ✅ Must be lowercase extensions                |
+| `inputs`            | ✅ Types, options, and structure validated     |
+| `submit`            | ✅ Action & label checks                       |
+| `api` config        | ✅ URL, method, body, responseType validated   |
+| `bodyTemplate`      | ✅ Requires `{webhook_url}`                  |
+| Duplicate `bPods`   | ✅ Disallowed                                  |
+| Multi-file support    | ✅ With full include trace                     |
+| Error reporting       | ✅ Detailed with type, message, and file trace |
+
+---
+
+## 📁 Project Structure
+
+```
+example/
+  ├── index.bui              # Main entry
+  ├── single-index.bui       # Standalone BUI file
+  └── soundai-folder/
+      ├── podcast-cleaner.bui
+      └── voice-transcriber.bui
+
+src/
+  ├── core/                  # Parser and validator logic
+  ├── schema/                # Zod validation schema
+  └── index.ts               # Compiler entry point
+
+scripts/
+  └── run-examples.ts        # Test runner for all example cases
+```
+
+---
+
+## 🧪 Running Examples
+
+```bash
+node test.js
+```
+
+Each `.bui` example is validated and output is shown with:
+
+- ❌ Error list
+- 🧠 Parsed AST (if valid)
+- 📍 Metadata (file inclusion + pod map)
+
+---
+
+## 🚨 Error Format
+
+```ts
+{
+  message: string;         // User-facing message
+  severity: "error";       // (Future: warning, info)
+  line: number;
+  column: number;
+  file?: string;           // (Planned) Which file the error came from
+}
+```
+
+---
+
+## 🌐 Use Cases
+
+- 🧱 Define AI plugin panels visually
+- 🛠 Integrate microservices into creative apps
+- ⚡️ Rapidly prototype tools with declarative UIs
+- 💼 Marketplace-ready panel definitions
+
+---
+
+## 💡 Roadmap
+
+- [ ] Include exact file in all error messages
+- [ ] CLI tool (`bui compile path.bui`)
+- [ ] JSON Schema export
+- [ ] VS Code extension
+- [ ] Runtime rendering engine
+
+---
+
+## 🤝 Contributing
+
+Want to extend or improve the compiler?
+PRs welcome! Please follow the coding style and naming conventions used in `src/`.
+
+---
+
+## 📄 License
+
+MIT License — free for commercial & personal use.
+
+---
+
+## 🔗 About Breeth
+
+Breeth is a next-gen platform for AI-powered creative tooling. We make it easy for developers to build, share, and monetize AI services inside any creative app.
+
+- 🌍 https://thebreeth.com
+- 🧑‍💻 Made by [Siva Rama Krishna](https://github.com/sivarama)
