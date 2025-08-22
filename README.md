@@ -5,11 +5,11 @@ A robust, production-grade compiler for parsing, validating, and merging `.bui` 
 ## 🚀 Quick Start
 
 ```bash
-npm install @srk0102/bui-compiler
+npm install breeth-bui-compiler
 ```
 
 ```typescript
-import { renderBUIString } from '@srk0102/bui-compiler';
+import { renderBUIString } from 'breeth-bui-compiler';
 
 // Pass BUI content, get rendered output back (like axios)
 const htmlOutput = renderBUIString(buiContent, 'html', 'light');
@@ -78,22 +78,22 @@ if (result.success) {
 
 ```bash
 # Compile a .bui file
-npx @srk0102/bui-compiler compile index.bui
+npx breeth-bui-compiler compile index.bui
 
 # Validate a .bui file
-npx @srk0102/bui-compiler validate index.bui
+npx breeth-bui-compiler validate index.bui
 
 # Render a .bui file to HTML, React, or JSON
 npx @breeth/bui-compiler render index.bui
 
 # Get detailed information
-npx @srk0102/bui-compiler info index.bui
+npx breeth-bui-compiler info index.bui
 ```
 
 #### Compile Command
 
 ```bash
-npx @srk0102/bui-compiler compile <entry-file> [options]
+npx breeth-bui-compiler compile <entry-file> [options]
 ```
 
 **Options:**
@@ -110,7 +110,7 @@ npx @srk0102/bui-compiler compile <entry-file> [options]
 #### Render Command
 
 ```bash
-npx @srk0102/bui-compiler render <entry-file> [options]
+npx breeth-bui-compiler render <entry-file> [options]
 ```
 
 **Options:**
@@ -329,7 +329,7 @@ const jsonOutput = renderBUIString(buiContent, 'json');
 #### Advanced Renderer with Options
 
 ```typescript
-import { renderBUIContent } from '@srk0102/bui-compiler';
+import { renderBUIContent } from 'breeth-bui-compiler';
 
 const result = renderBUIContent(buiContent, {
   format: 'html',
@@ -350,7 +350,7 @@ if (result.success) {
 #### Direct Parsing
 
 ```typescript
-import { parseBUI } from '@srk0102/bui-compiler';
+import { parseBUI } from 'breeth-bui-compiler';
 
 const parseResult = parseBUI('/tmp/demo.bui', { 
   content: buiContent,
@@ -367,7 +367,7 @@ if (parseResult.success) {
 #### File-based Rendering (Legacy)
 
 ```typescript
-import { renderBUI } from '@srk0102/bui-compiler';
+import { renderBUI } from 'breeth-bui-compiler';
 
 const htmlResult = renderBUI('index.bui', {
   format: 'html',
@@ -386,7 +386,7 @@ if (htmlResult.success) {
 #### CLI-specific Functions
 
 ```typescript
-import { renderBUICLI } from '@srk0102/bui-compiler/cli';
+import { renderBUICLI } from 'breeth-bui-compiler/cli';
 
 // CLI-specific functions for programmatic CLI usage
 renderBUICLI('index.bui', {
