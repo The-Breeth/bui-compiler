@@ -7,7 +7,7 @@
  * that returns rendered output directly (like axios), not creating files.
  */
 
-const { renderBUIString, renderBUIContent, parseBUI } = require('@breeth/bui-compiler');
+const { renderBUIString, renderBUIContent, parseBUI } = require('@srk0102/bui-compiler');
 
 // Sample BUI content
 const sampleBUI = `
