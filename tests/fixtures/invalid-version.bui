@@ -1,0 +1,18 @@
+
+version: "2.0.0"
+
+---
+b-pod: "Test Service" {
+  "accepts": ["txt"],
+  "submit": { "label": "Process", "action": "processText" },
+  "api": {
+    "url": "https://api.test.com/v1/run",
+    "method": "POST",
+    "fileParams": ["textFile"],
+    "bodyTemplate": {
+      "file": "{textFile}",
+      "webhook_url": "{webhook_url}"
+    },
+    "responseType": "file"
+  }
+}

@@ -1,0 +1,20 @@
+version: "1.0.0"
+
+---
+files: ["profile/profile.bui", "services/audio.bui", "services/text.bui", "services/image.bui"]
+
+---
+b-pod: "Main Orchestrator" {
+  "accepts": ["txt", "mp3", "jpg"],
+  "submit": { "label": "Process All", "action": "orchestrate" },
+  "api": {
+    "url": "https://api.example.com/v1/orchestrate",
+    "method": "POST",
+    "fileParams": ["inputFile"],
+    "bodyTemplate": {
+      "file": "{inputFile}",
+      "webhook_url": "{webhook_url}"
+    },
+    "responseType": "json"
+  }
+}

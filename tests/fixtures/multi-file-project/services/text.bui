@@ -1,0 +1,26 @@
+b-pod: "Text Analyzer" {
+  "accepts": ["txt", "md", "docx"],
+  "description": "Analyze text documents for sentiment and keywords",
+  "tags": ["text", "analysis", "nlp"],
+  "inputs": [
+    {
+      "name": "analysis_type",
+      "type": "radio",
+      "label": "Analysis Type",
+      "options": ["sentiment", "keywords", "readability"],
+      "required": true
+    }
+  ],
+  "submit": { "label": "Analyze Text", "action": "analyzeText" },
+  "api": {
+    "url": "https://api.example.com/v1/text",
+    "method": "POST",
+    "fileParams": ["textFile"],
+    "bodyTemplate": {
+      "file": "{textFile}",
+      "analysis_type": "{analysis_type}",
+      "webhook_url": "{webhook_url}"
+    },
+    "responseType": "json"
+  }
+}

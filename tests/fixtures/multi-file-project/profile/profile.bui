@@ -1,0 +1,26 @@
+b-pod: "Profile Manager" {
+  "accepts": ["json", "yaml"],
+  "description": "Manage user profiles and settings",
+  "tags": ["profile", "management", "settings"],
+  "inputs": [
+    {
+      "name": "profile_type",
+      "type": "dropdown",
+      "label": "Profile Type",
+      "options": ["user", "admin", "guest"],
+      "required": true
+    }
+  ],
+  "submit": { "label": "Manage Profile", "action": "manageProfile" },
+  "api": {
+    "url": "https://api.example.com/v1/profile",
+    "method": "POST",
+    "fileParams": ["profileFile"],
+    "bodyTemplate": {
+      "file": "{profileFile}",
+      "profile_type": "{profile_type}",
+      "webhook_url": "{webhook_url}"
+    },
+    "responseType": "json"
+  }
+}

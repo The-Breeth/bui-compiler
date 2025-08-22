@@ -1,0 +1,21 @@
+
+version: "1.0.0"
+
+---
+files: ["profile.bui", "services.bui"]
+
+---
+b-pod: "Main Service" {
+  "accepts": ["txt"],
+  "submit": { "label": "Process", "action": "processText" },
+  "api": {
+    "url": "https://api.test.com/v1/run",
+    "method": "POST",
+    "fileParams": ["textFile"],
+    "bodyTemplate": {
+      "file": "{textFile}",
+      "webhook_url": "{webhook_url}"
+    },
+    "responseType": "file"
+  }
+}
