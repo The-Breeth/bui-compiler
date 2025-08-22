@@ -51,12 +51,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/breeth/bui-compiler.git"
+    "url": "https://github.com/The-Breeth/bui-compiler.git"
   },
   "bugs": {
-    "url": "https://github.com/breeth/bui-compiler/issues"
+    "url": "https://github.com/The-Breeth/bui-compiler/issues"
   },
-  "homepage": "https://github.com/breeth/bui-compiler#readme",
+  "homepage": "https://github.com/The-Breeth/bui-compiler#readme",
   "bin": {
     "breeth-bui-compiler": "./dist/cli.js"
   },
