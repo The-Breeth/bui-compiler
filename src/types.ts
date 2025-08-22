@@ -19,11 +19,21 @@ export interface BPodInput {
     | "hidden";
   label?: string;
   options?: string[];
+  required?: boolean;
+  placeholder?: string;
+  validation?: {
+    min?: number;
+    max?: number;
+    pattern?: string;
+    message?: string;
+  };
 }
 
 export interface BPodSubmit {
   label: string;
   action: string;
+  disabled?: boolean;
+  loading?: boolean;
 }
 
 export interface BPodApi {
@@ -32,6 +42,9 @@ export interface BPodApi {
   fileParams: string[];
   bodyTemplate: Record<string, string>;
   responseType: "file" | "json";
+  headers?: Record<string, string>;
+  timeout?: number;
+  retries?: number;
 }
 
 export interface BPod {
@@ -40,10 +53,20 @@ export interface BPod {
   inputs?: BPodInput[];
   submit: BPodSubmit;
   api: BPodApi;
+  description?: string;
+  tags?: string[];
+  version?: string;
 }
 
 export interface CompileOptions {
   withMetadata?: boolean;
+  strict?: boolean;
+  allowWarnings?: boolean;
+  maxFileSize?: number; // in bytes
+  maxFiles?: number;
+  validateUrls?: boolean;
+  timeout?: number; // in milliseconds
+  content?: string; // Direct content for parsing without file system
 }
 
 export interface CompileResult {
@@ -55,8 +78,13 @@ export interface CompileResult {
   metadata?: {
     includedFiles: string[];
     bPodFileMap: Record<string, string>;
+    parseTime: number;
+    totalSize: number;
+    warnings: CompilerWarning[];
   };
   errors: CompilerError[];
+  warnings: CompilerWarning[];
+  success: boolean;
 }
 
 export interface CompilerError {
@@ -64,4 +92,55 @@ export interface CompilerError {
   line: number;
   column: number;
   severity: "error" | "warning";
+  code: string;
+  file?: string;
+  context?: string;
+  suggestion?: string;
+}
+
+export interface CompilerWarning extends Omit<CompilerError, 'severity'> {
+  severity: "warning";
+}
+
+export interface ValidationResult<T> {
+  success: boolean;
+  data?: T;
+  error?: {
+    issues: ValidationIssue[];
+    message: string;
+  };
+}
+
+export interface ValidationIssue {
+  message: string;
+  path: string[];
+  code: string;
+  received: any;
+  expected?: any;
+}
+
+export interface ParseContext {
+  filePath: string;
+  content: string;
+  lineOffset: number;
+  currentLine: number;
+  currentColumn: number;
+}
+
+export interface Token {
+  type: 'version' | 'profile' | 'bpod' | 'files' | 'separator';
+  value: string;
+  line: number;
+  column: number;
+  raw: string;
+}
+
+export interface CompilerStats {
+  totalFiles: number;
+  totalBPods: number;
+  parseTime: number;
+  validationTime: number;
+  totalErrors: number;
+  totalWarnings: number;
+  fileSizes: Record<string, number>;
 }

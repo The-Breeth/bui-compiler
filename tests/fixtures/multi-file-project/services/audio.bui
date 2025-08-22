@@ -1,0 +1,26 @@
+b-pod: "Audio Processor" {
+  "accepts": ["mp3", "wav", "aac", "flac"],
+  "description": "Process audio files with various effects",
+  "tags": ["audio", "processing"],
+  "inputs": [
+    {
+      "name": "effect",
+      "type": "dropdown",
+      "label": "Audio Effect",
+      "options": ["reverb", "echo", "compression"],
+      "required": true
+    }
+  ],
+  "submit": { "label": "Process Audio", "action": "processAudio" },
+  "api": {
+    "url": "https://api.example.com/v1/audio",
+    "method": "POST",
+    "fileParams": ["audioFile"],
+    "bodyTemplate": {
+      "file": "{audioFile}",
+      "effect": "{effect}",
+      "webhook_url": "{webhook_url}"
+    },
+    "responseType": "file"
+  }
+}

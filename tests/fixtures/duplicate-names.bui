@@ -1,0 +1,34 @@
+
+version: "1.0.0"
+
+---
+b-pod: "Test Service" {
+  "accepts": ["txt"],
+  "submit": { "label": "Process", "action": "processText" },
+  "api": {
+    "url": "https://api.test.com/v1/run",
+    "method": "POST",
+    "fileParams": ["textFile"],
+    "bodyTemplate": {
+      "file": "{textFile}",
+      "webhook_url": "{webhook_url}"
+    },
+    "responseType": "file"
+  }
+}
+
+---
+b-pod: "Test Service" {
+  "accepts": ["md"],
+  "submit": { "label": "Process", "action": "processMarkdown" },
+  "api": {
+    "url": "https://api.test.com/v1/run",
+    "method": "POST",
+    "fileParams": ["markdownFile"],
+    "bodyTemplate": {
+      "file": "{markdownFile}",
+      "webhook_url": "{webhook_url}"
+    },
+    "responseType": "file"
+  }
+}
