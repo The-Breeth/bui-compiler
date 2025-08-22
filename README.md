@@ -2,6 +2,10 @@
 
 A robust, production-grade compiler for parsing, validating, and merging `.bui` files. This compiler provides comprehensive error reporting, validation, and a powerful CLI interface for working with Breeth UI configuration files.
 
+**📦 Package:** `breeth-bui-compiler`  
+**👤 Author:** `@srk0102`  
+**🔗 NPM:** https://www.npmjs.com/package/breeth-bui-compiler
+
 ## 🚀 Quick Start
 
 ```bash
@@ -84,11 +88,22 @@ npx breeth-bui-compiler compile index.bui
 npx breeth-bui-compiler validate index.bui
 
 # Render a .bui file to HTML, React, or JSON
-npx @breeth/bui-compiler render index.bui
+npx breeth-bui-compiler render index.bui
 
 # Get detailed information
 npx breeth-bui-compiler info index.bui
 ```
+
+**CLI Command:** `npx breeth-bui-compiler` or `npx breeth-bui-compiler --help`
+
+### Available Commands
+
+| Command | Description | Usage |
+|---------|-------------|-------|
+| `compile` | Compile and validate .bui files | `npx breeth-bui-compiler compile <file>` |
+| `validate` | Quick validation without compilation | `npx breeth-bui-compiler validate <file>` |
+| `render` | Render to HTML/React/JSON | `npx breeth-bui-compiler render <file>` |
+| `info` | Get detailed file information | `npx breeth-bui-compiler info <file>` |
 
 #### Compile Command
 
@@ -97,15 +112,15 @@ npx breeth-bui-compiler compile <entry-file> [options]
 ```
 
 **Options:**
-- `-o, --output <file>`: Output file for compilation result
-- `-f, --format <format>`: Output format (json, pretty)
-- `--strict`: Enable strict mode with additional validations
-- `--no-warnings`: Suppress warnings
-- `--max-file-size <bytes>`: Maximum file size in bytes (default: 1MB)
-- `--max-files <count>`: Maximum number of files (default: 100)
-- `--validate-urls`: Validate API URLs
-- `--timeout <ms>`: Timeout for URL validation (default: 5000ms)
-- `--metadata`: Include metadata in output
+- `-o, --output <file>`: Save output to file (default: console)
+- `-f, --format <format>`: Output format: `json` or `pretty` (default: pretty)
+- `--strict`: Enable strict validation mode
+- `--no-warnings`: Hide warning messages
+- `--max-file-size <bytes>`: Max file size limit (default: 1MB)
+- `--max-files <count>`: Max number of files (default: 100)
+- `--validate-urls`: Check if API URLs are accessible
+- `--timeout <ms>`: URL validation timeout (default: 5000ms)
+- `--metadata`: Include build metadata in output
 
 #### Render Command
 
@@ -114,26 +129,26 @@ npx breeth-bui-compiler render <entry-file> [options]
 ```
 
 **Options:**
-- `-f, --format <format>`: Output format (html, react, json) - default: html
-- `-t, --theme <theme>`: Theme (light, dark) - default: light
-- `-o, --output <file>`: Output file for rendered result
-- `--show-warnings`: Show warnings in output
-- `--show-errors`: Show errors in output
-- `--class-name <className>`: Custom CSS class name
+- `-f, --format <format>`: Output format: `html`, `react`, or `json` (default: html)
+- `-t, --theme <theme>`: Theme: `light` or `dark` (default: light)
+- `-o, --output <file>`: Save output to file (default: console)
+- `--show-warnings`: Include warnings in output
+- `--show-errors`: Include errors in output
+- `--class-name <name>`: Custom CSS class name for styling
 
 **Examples:**
 ```bash
 # Render to HTML with light theme
-npx @breeth/bui-compiler render index.bui -f html -t light
+npx breeth-bui-compiler render index.bui -f html -t light
 
 # Render to React component with dark theme
-npx @srk0102/bui-compiler render index.bui -f react -t dark
+npx breeth-bui-compiler render index.bui -f react -t dark
 
 # Render to JSON and save to file
-npx @srk0102/bui-compiler render index.bui -f json -o output.json
+npx breeth-bui-compiler render index.bui -f json -o output.json
 
 # Render to HTML with custom class and save to file
-npx @srk0102/bui-compiler render index.bui -f html -t light --class-name my-app -o app.html
+npx breeth-bui-compiler render index.bui -f html -t light --class-name my-app -o app.html
 ```
 
 ## 📝 BUI File Format
