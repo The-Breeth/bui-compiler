@@ -1,8 +1,7 @@
 {
   "name": "@breeth/bui-compiler",
   "version": "1.1.0",
-  "description": "Breeth .bui compiler for parsing, validating, and merging .bui files (PRIVATE - Breeth members only)",
-  "private": true,
+  "description": "Breeth .bui compiler for parsing, validating, and merging .bui files",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -49,7 +48,7 @@
     "validation"
   ],
   "author": "Breeth",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/breeth/bui-compiler.git"
