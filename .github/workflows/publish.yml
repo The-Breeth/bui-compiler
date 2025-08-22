@@ -53,6 +53,7 @@ jobs:
         node-version: '18.x'
         cache: 'npm'
         registry-url: 'https://registry.npmjs.org'
+        scope: '@srk0102'
         
     - name: Install dependencies
       run: npm ci
@@ -62,6 +63,11 @@ jobs:
       
     - name: Build project
       run: npm run build
+      
+    - name: Setup NPM for publishing
+      run: |
+        echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
+        echo "@srk0102:registry=https://registry.npmjs.org/" >> .npmrc
       
     - name: Verify branch protection
       run: |
