@@ -1,19 +1,6 @@
 # Breeth BUI Compiler
 
-**⚠️ PRIVATE COMPANY SOFTWARE - BREETH MEMBERS ONLY ⚠️**
-
 A robust, production-grade compiler for parsing, validating, and merging `.bui` files. This compiler provides comprehensive error reporting, validation, and a powerful CLI interface for working with Breeth UI configuration files.
-
-## 🔒 **ACCESS RESTRICTIONS**
-
-- **ONLY authorized Breeth employees and contractors may use this software**
-- **NO unauthorized copying, distribution, or use is permitted**
-- **Access is granted solely through official Breeth channels**
-- **For access, contact your Breeth team lead or legal@breeth.com**
-
-## 📋 **LICENSE**
-
-This software is proprietary and confidential to Breeth. Unauthorized use is strictly prohibited and may result in legal action.
 
 ## 🚀 Quick Start
 

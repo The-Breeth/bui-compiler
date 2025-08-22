@@ -1,38 +1,21 @@
-BREETH PROPRIETARY SOFTWARE LICENSE
+MIT License
 
-Copyright (c) 2025 Breeth. All rights reserved.
+Copyright (c) 2024 Breeth
 
-This software and associated documentation files (the "Software") are the 
-proprietary and confidential information of Breeth ("Company") and are 
-protected by copyright laws and international copyright treaties, as well 
-as other intellectual property laws and treaties.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-RESTRICTIONS:
-- This Software is STRICTLY CONFIDENTIAL and PROPRIETARY to Breeth
-- NO unauthorized copying, distribution, modification, or use is permitted
-- NO reverse engineering, disassembly, or decompilation is allowed
-- NO commercial use by third parties is permitted
-- NO redistribution or sublicensing is allowed
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-AUTHORIZED USE:
-- ONLY authorized Breeth employees and contractors may use this Software
-- ONLY for internal Breeth business purposes
-- ONLY on Breeth-approved systems and networks
-- Access is granted solely through official Breeth channels
-
-VIOLATIONS:
-- Any unauthorized use, copying, or distribution is strictly prohibited
-- Violations may result in legal action and termination of access
-- Breeth reserves all rights to pursue legal remedies
-
-TERMINATION:
-- This license terminates automatically if you fail to comply with its terms
-- Upon termination, you must cease all use and destroy all copies
-
-This Software is provided "AS IS" without warranty of any kind. Breeth 
-disclaims all warranties, express or implied, including but not limited to 
-the implied warranties of merchantability and fitness for a particular purpose.
-
-For questions regarding this license, contact: legal@breeth.com
-
-ALL RIGHTS RESERVED.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
