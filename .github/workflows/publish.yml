@@ -53,7 +53,6 @@ jobs:
         node-version: '18.x'
         cache: 'npm'
         registry-url: 'https://registry.npmjs.org'
-        # No scope needed for unscoped package
         
     - name: Install dependencies
       run: npm ci
@@ -67,6 +66,8 @@ jobs:
     - name: Setup NPM for publishing
       run: |
         echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
+        echo "registry=https://registry.npmjs.org/" >> .npmrc
+        echo "NPM Token configured (length: ${#NODE_AUTH_TOKEN})"
       
     - name: Verify branch protection
       run: |
@@ -78,6 +79,13 @@ jobs:
         echo "✅ Publishing from master/main branch"
       
     - name: Publish to NPM
-      run: npm publish --access public
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Package name: $(node -p "require('./package.json').name")"
+        echo "Package version: $(node -p "require('./package.json').version")"
+        echo "Checking if package exists..."
+        npm view breeth-bui-compiler || echo "Package doesn't exist yet (this is normal for first publish)"
+        echo "Publishing package..."
+        npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
