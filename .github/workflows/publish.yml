@@ -36,7 +36,12 @@ jobs:
   publish:
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    # STRICT: Only publish from master/main branch, never from PRs or other branches
+    if: |
+      (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main') &&
+      github.event_name == 'push' &&
+      !contains(github.event.head_commit.message, '[skip ci]') &&
+      !contains(github.event.head_commit.message, '[no publish]')
     
     steps:
     - name: Checkout code
@@ -57,6 +62,15 @@ jobs:
       
     - name: Build project
       run: npm run build
+      
+    - name: Verify branch protection
+      run: |
+        if [ "${{ github.ref }}" != "refs/heads/master" ] && [ "${{ github.ref }}" != "refs/heads/main" ]; then
+          echo "❌ ERROR: Publishing is only allowed from master/main branch"
+          echo "Current branch: ${{ github.ref }}"
+          exit 1
+        fi
+        echo "✅ Publishing from master/main branch"
       
     - name: Publish to NPM
       run: npm publish
